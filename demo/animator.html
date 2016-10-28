@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>animator test</title>
+	<style>
+	  #myCanvas {
+	  	border: 1px solid blue;
+	  }
+	</style>
+</head>
+<body>
+	<canvas id="myCanvas" width="800" height="450"></canvas>
+	<br />
+	<button id="myPlayBtn1" onclick="animator.playAnim()">Play</button>
+	<button id="myPauseBtn" onclick="animator.pauseAnim()">Pause</button>
+	<button id="myPlayBtn2">Macro Play</button>
+
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="../src/INHANCE_SegmentAnimator.jquery.js"></script>
+	<script>
+		var animator = new INHANCE_SegmentAnimator.Animator('#myCanvas',
+	    {
+	      naming: 'rotate/etron_CROP_##.png',
+	      frames: 72,
+	      fps: 60,
+	      onInit: function () {
+	      	console.log('ready!!');
+	      }
+	    }
+	  );
+
+		$('#myPlayBtn2').on('click', function () {
+			animator.playAnim(0, 49, false, function () {
+        console.log('playAnim DONE!');
+        animator.playAnim(50, 71, true);	// for loop animation within a certain segment
+      });
+		});
+	</script>
+</body>
+</html>
