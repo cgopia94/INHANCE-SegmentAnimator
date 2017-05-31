@@ -47,7 +47,7 @@ var INHANCE_SegmentAnimator = (function () {
 
     this.playAnim = function (start, end, isLoop, callback) {
       if (this.isPlaying) this.pauseAnim();
-      this.start = start || this.cnt;
+      this.start = start;
       this.cnt = 0;
       this.end = Math.min(end || this.imgs.length - 1, this.imgs.length - 1);
       this.isLoop = isLoop;
